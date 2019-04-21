@@ -140,6 +140,12 @@ public class CatalogController {
         return result;
     }
 
+    /**
+     * 获取服务列表
+     * @param request
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/services", method = RequestMethod.GET)
     public Object listDetail(HttpServletRequest request) throws Exception {
 

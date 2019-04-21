@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Instance
+ * Instance 提供一个或多个服务的具有可访问网络地址（IP:Port）的进程
  *
  * @author nkorange
  */

@@ -429,8 +429,10 @@ public class ServiceManager implements RecordListener<Service> {
 
     public void removeInstance(String namespaceId, String serviceName, boolean ephemeral, Instance... ips) throws NacosException {
 
+        // 构建key,通过ephemeral字段判断是临时的还是持久化的
         String key = KeyBuilder.buildInstanceListKey(namespaceId, serviceName, ephemeral);
 
+        // 通过namespaceId 和 serviceName获取service
         Service service = getService(namespaceId, serviceName);
 
         List<Instance> instanceList = substractIpAddresses(service, ephemeral, ips);

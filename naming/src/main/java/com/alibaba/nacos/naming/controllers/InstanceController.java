@@ -102,9 +102,16 @@ public class InstanceController {
         return "ok";
     }
 
+    /**
+     * 各应用服务器关闭的时候会调用此方法，进行实例注销
+     * @param request
+     * @return
+     * @throws Exception
+     */
     @CanDistro
     @RequestMapping(value = "", method = RequestMethod.DELETE)
     public String deregister(HttpServletRequest request) throws Exception {
+        // 获取待注销的实例
         Instance instance = getIPAddress(request);
         String namespaceId = WebUtils.optional(request, CommonParams.NAMESPACE_ID,
             Constants.DEFAULT_NAMESPACE_ID);
@@ -211,6 +218,12 @@ public class InstanceController {
         throw new NacosException(NacosException.NOT_FOUND, "no matched ip found!");
     }
 
+    /**
+     * 前端每1s会请求一次
+     * @param request
+     * @return
+     * @throws Exception
+     */
     @CanDistro
     @RequestMapping(value = "/beat", method = RequestMethod.PUT)
     public JSONObject beat(HttpServletRequest request) throws Exception {
